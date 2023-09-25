@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body class="home">
     <main class="background background__light">
-      <div class="frame"></div>
+      <div class="frame">
+        <h1 class="home__logo">Trivia Game</h1>
+        <a href="../game/" class="home__startLink">Play Game</a>
+        <div class="home__topscores">
+          <h2 class="home__h2">Top Scores</h2>
+          <div class="home__scoreContainer">
+            <include src="../../components/Loader.html" />
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

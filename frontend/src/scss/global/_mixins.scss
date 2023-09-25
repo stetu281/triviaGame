@@ -3,3 +3,16 @@
     @content;
   }
 }
+
+@mixin glowAnimation {
+  @for $i from 2 through 8 {
+    &:nth-of-type(#{$i}) {
+      animation: glow
+        $glow_duration
+        ease-in-out
+        #{($i - 1) *
+        $glow_delay}
+        infinite;
+    }
+  }
+}
