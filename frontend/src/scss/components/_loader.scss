@@ -1,0 +1,29 @@
+.loader {
+  @keyframes glow {
+    0% {
+      filter: drop-shadow(0 0 0 #ba7af1);
+    }
+    50% {
+      filter: drop-shadow(0 0 8px #ba7af1);
+      fill: #b16deb;
+    }
+    100% {
+      filter: drop-shadow(0 0 0 #ba7af1);
+    }
+  }
+
+  width: 5rem;
+  height: auto;
+
+  circle {
+    &:first-of-type {
+      animation: glow $glow_duration ease-in-out 0s infinite;
+    }
+
+    @include glowAnimation;
+  }
+
+  &--hide {
+    display: none;
+  }
+}
