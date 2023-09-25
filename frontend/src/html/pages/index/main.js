@@ -3,11 +3,8 @@ const avatars = importAll(
   require.context("../../../assets/images/avatars", false, /\.(png)$/)
 );
 
-console.log(avatars);
-
 (async () => {
   const data = await getTopScores();
-  console.log(data);
   renderTopScores(data);
 })();
 
