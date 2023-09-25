@@ -4,14 +4,9 @@ const avatars = importAll(
 );
 
 (async () => {
-  const data = await getTopScores();
+  const data = await FetchScores(3);
   renderTopScores(data);
 })();
-
-async function getTopScores() {
-  const data = await FetchScores(3);
-  return data;
-}
 
 function renderTopScores({ scores }) {
   const container = document.querySelector(".home__scoreContainer");
@@ -20,9 +15,10 @@ function renderTopScores({ scores }) {
     let div = document.createElement("div");
     div.className = "home__singleScore";
     div.innerHTML = `
-            <img src="assets/avatar-${scores[i].avatar}-1x.png" /><p>${scores[i].username}</p><p>${scores[i].score}</p>
+            <img src="assets/avatar-${scores[i].avatar}-1x.png" class="home__singleScore--img" /><p class="home__singleScore--name">${scores[i].username}</p><p class="home__singleScore--score">${scores[i].score} Points</p>
         `;
     container.appendChild(div);
+    document.querySelector("#loader").classList.add("loader--hide");
   }
 }
 
