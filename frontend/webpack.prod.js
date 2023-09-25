@@ -13,7 +13,7 @@ module.exports = merge(common, {
   output: {
     filename: "main.[contenthash].js",
     path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: "assets/img/[name]-[hash][ext]",
+    assetModuleFilename: "assets/[name]-[hash][ext]",
   },
   module: {
     rules: [
