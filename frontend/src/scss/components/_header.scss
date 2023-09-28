@@ -1,0 +1,13 @@
+.header {
+  padding: 1rem 0;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+
+  &__lifesContainer {
+    display: flex;
+    column-gap: 0.25rem;
+  }
+}
