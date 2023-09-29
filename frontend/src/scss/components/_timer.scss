@@ -19,8 +19,8 @@
   }
 
   &__time {
+    font-family: $bold;
     font-size: 1.5rem;
-    font-weight: 700;
   }
 
   @keyframes timer {

@@ -4,12 +4,12 @@
   text-align: center;
 
   &__category {
-    font-family: "poppins_light", sans-serif;
+    font-family: $light;
     text-transform: uppercase;
   }
 
   &__question {
-    font-family: "poppins_bold", sans-serif;
+    font-family: $bold;
     font-size: 2.25rem;
   }
 
@@ -40,7 +40,7 @@
 
   &__resultMessage {
     margin-top: 2rem;
-    font-family: "poppins_semi_bold", sans-serif;
+    font-family: $semi;
     font-size: 1.5rem;
   }
 
@@ -48,7 +48,7 @@
     margin-top: 2rem;
     padding: 0.75rem 2rem;
     background-color: $primary;
-    font-family: "poppins_semi_bold", sans-serif;
+    font-family: $semi;
     color: $white;
     border-radius: $br_xl;
   }
