@@ -1,6 +1,8 @@
 .submitScore {
-  padding-bottom: 2rem;
+  padding: 1.5rem 1rem;
   width: 90%;
+  background-color: rgba($black, 0.5);
+  border-radius: $br_l;
   text-align: center;
 
   &__title {
@@ -43,7 +45,7 @@
 
     & + label {
       display: inline-block;
-      width: 50px;
+      width: 48px;
       aspect-ratio: 1 / 1;
       @include avatars;
       background-size: contain;
