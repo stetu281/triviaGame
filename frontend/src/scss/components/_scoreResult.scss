@@ -1,0 +1,41 @@
+.scoreResult {
+  width: 90%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../assets/images/resultBg.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+
+  &__title {
+    font-family: "luckiestGuy", sans-serif;
+    font-weight: 400;
+    font-size: 3.5rem;
+  }
+
+  &__points {
+    margin-top: 3rem;
+    width: 45%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    border-radius: $br_full;
+    font-family: $semi;
+    font-size: 0.875rem;
+    color: $bg_dark;
+
+    p {
+      text-align: center;
+    }
+
+    span {
+      font-family: $bold;
+      font-size: 2.25rem;
+      line-height: 100%;
+    }
+  }
+}

@@ -16,3 +16,11 @@
     }
   }
 }
+
+@mixin avatars {
+  @for $i from 1 through 12 {
+    &:nth-of-type(#{$i}) {
+      background-image: url(../assets/images/avatars/avatar-#{$i}-2x.png);
+    }
+  }
+}
