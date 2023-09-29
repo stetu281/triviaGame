@@ -1,0 +1,55 @@
+.question {
+  padding-bottom: 1rem;
+  width: 90%;
+  text-align: center;
+
+  &__category {
+    font-family: "poppins_light", sans-serif;
+    text-transform: uppercase;
+  }
+
+  &__question {
+    font-family: "poppins_bold", sans-serif;
+    font-size: 2.25rem;
+  }
+
+  &__answer {
+    margin-top: 1.25rem;
+    width: 100%;
+    padding: 0.75rem 2rem;
+    border-radius: $br_sm;
+    background-color: $white;
+    color: $bg_dark;
+
+    &--correct {
+      color: $green;
+      background-color: $black;
+      border: 2px solid $green;
+    }
+
+    &--wrong {
+      color: $red;
+      background-color: $black;
+      border: 2px solid $red;
+    }
+
+    &--correctAnswer {
+      background-color: $green;
+    }
+  }
+
+  &__resultMessage {
+    margin-top: 2rem;
+    font-family: "poppins_semi_bold", sans-serif;
+    font-size: 1.5rem;
+  }
+
+  &__next {
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    background-color: $primary;
+    font-family: "poppins_semi_bold", sans-serif;
+    color: $white;
+    border-radius: $br_xl;
+  }
+}
