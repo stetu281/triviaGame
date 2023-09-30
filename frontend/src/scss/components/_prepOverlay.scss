@@ -1,0 +1,75 @@
+.prep {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  transition: top 0.2s ease-in-out;
+  z-index: 20;
+  background-color: $black;
+  text-align: center;
+
+  &--hide {
+    top: 100vh;
+  }
+
+  @keyframes pulse {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.2;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
+  &__logo {
+    animation: pulse 3s ease-in-out;
+    animation-iteration-count: 2;
+    font-family: "luckiestGuy", sans-serif;
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 100%;
+    text-shadow: 0 0.5rem 1rem rgba($primary, 0.7);
+  }
+
+  &__loading {
+    margin-top: 7rem;
+    font-family: "luckiestGuy", sans-serif;
+    font-size: 3rem;
+    color: $primary;
+  }
+
+  @keyframes jump {
+    0% {
+      transform: translateY(0px);
+    }
+    70% {
+      transform: translateY(-15px);
+      scale: 1.6;
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  &__jump {
+    display: inline-block;
+    scale: 1.3;
+    animation: jump 0.8s cubic-bezier(0.13, -0.17, 0.8, 1.23);
+    animation-iteration-count: 6;
+
+    &:nth-of-type(2) {
+      animation-delay: 0.1s;
+    }
+
+    &:nth-of-type(3) {
+      animation-delay: 0.25s;
+    }
+  }
+}
