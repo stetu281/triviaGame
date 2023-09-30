@@ -1,4 +1,12 @@
 import { FetchQuestions } from "../../../js/tools/FetchQuestions";
+import { RenderRound } from "../../../js/tools/RenderRound";
+
+const player = {
+  round: 0,
+  score: 0,
+  lives: 3,
+  questions: null,
+};
 
 (async () => {
   PrepareRound();
@@ -13,4 +21,7 @@ import { FetchQuestions } from "../../../js/tools/FetchQuestions";
 
 async function PrepareRound() {
   const questions = await FetchQuestions(5);
+  player.questions = questions;
+
+  RenderRound(player);
 }
