@@ -10,10 +10,14 @@ const player = {
 };
 
 (async () => {
+  start();
+})();
+
+async function start() {
   const question = await PrepareRound();
   const roundResult = await PlayRound(question);
   HandleResult(roundResult);
-})();
+}
 
 //******Function -- prepare game round******
 async function PrepareRound() {
@@ -68,4 +72,36 @@ function HandleResult(result) {
   const resultContainer = document.querySelector(".question__resultContainer");
 
   player.round++;
+
+  if (result) {
+    switch (player.lives) {
+      case 3:
+        player.score += 10;
+        break;
+      case 2:
+        player.score += 8;
+        break;
+      case 1:
+        player.score += 6;
+        break;
+    }
+  } else {
+    if (player.lives <= 1) {
+      console.log("game over");
+    } else {
+      player.lives--;
+      console.log("live lost");
+    }
+  }
+
+  console.log(player);
+
+  document.querySelector(".question__next").addEventListener(
+    "click",
+    () => {
+      document.querySelector(".question__answersContainer").innerHTML = "";
+      start();
+    },
+    { once: true }
+  );
 }
