@@ -51,9 +51,9 @@ async function PlayRound(question) {
             timerAnimation.classList.remove("timer__progress--play");
 
             if (e.target.innerText === question.correctAnswer) {
-              resolve(true);
+              resolve([true, "Perfect, thats correct!"]);
             } else {
-              resolve(false);
+              resolve([false, "Wrong answer. You lost a life!"]);
             }
           }
         },
@@ -62,7 +62,7 @@ async function PlayRound(question) {
 
       if (counter < 0) {
         clearInterval(interval);
-        resolve(false);
+        resolve([false, "You ran out of Time"]);
       }
     }, 1000);
   });
@@ -70,10 +70,14 @@ async function PlayRound(question) {
 
 function HandleResult(result) {
   const resultContainer = document.querySelector(".question__resultContainer");
-
+  console.log(result);
   player.round++;
+  const msg = document.createElement("p");
+  msg.classList.add("question__resultMessage");
+  msg.innerText = result[1];
+  resultContainer.appendChild(msg);
 
-  if (result) {
+  if (result[0]) {
     switch (player.lives) {
       case 3:
         player.score += 10;
@@ -85,21 +89,31 @@ function HandleResult(result) {
         player.score += 6;
         break;
     }
+
+    createNextButton();
   } else {
     if (player.lives <= 1) {
       console.log("game over");
     } else {
       player.lives--;
-      console.log("live lost");
+      createNextButton();
     }
   }
 
   console.log(player);
+}
 
-  document.querySelector(".question__next").addEventListener(
+function createNextButton() {
+  const btn = document.createElement("button");
+  btn.classList.add("question__next");
+  btn.innerText = "Next Question";
+  document.querySelector(".question__resultContainer").appendChild(btn);
+
+  btn.addEventListener(
     "click",
     () => {
       document.querySelector(".question__answersContainer").innerHTML = "";
+      document.querySelector(".question__resultContainer").innerHTML = "";
       start();
     },
     { once: true }
