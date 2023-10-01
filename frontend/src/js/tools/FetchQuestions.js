@@ -63,8 +63,13 @@ export const FetchQuestions = async (num) => {
     },
   ];
 
-  return data;
-  /* const response = await fetch(
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 2000);
+  });
+
+  /*   const response = await fetch(
     `https://the-trivia-api.com/api/questions?limit=${num}`
   );
 

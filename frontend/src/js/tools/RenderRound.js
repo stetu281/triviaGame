@@ -1,8 +1,6 @@
 import { RandomizeAnswers } from "./RandomizeAnswers";
 
 export const RenderRound = (player) => {
-  console.log(player);
-
   const question = player.questions[player.round];
 
   document.querySelector("#question").innerText = player.round + 1;
