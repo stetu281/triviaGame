@@ -5,7 +5,7 @@ const getQuestionsNum = 5;
 const player = {
   round: 0,
   score: 0,
-  lives: 3,
+  lives: 0,
   questions: null,
 };
 
@@ -93,6 +93,7 @@ function HandleResult(result) {
   } else {
     if (player.lives <= 1) {
       console.log("game over");
+      gameOver();
     } else {
       player.lives--;
       switch (player.lives) {
@@ -105,6 +106,7 @@ function HandleResult(result) {
           document
             .querySelector(".header__lifesContainer svg:nth-child(2)")
             .classList.add("hide");
+          break;
       }
       createNextButton();
     }
@@ -128,4 +130,8 @@ function createNextButton() {
     },
     { once: true }
   );
+}
+
+function gameOver() {
+  document.querySelector("#result").innerText = player.score;
 }

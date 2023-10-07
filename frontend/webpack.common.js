@@ -9,7 +9,6 @@ module.exports = {
     shared: "./src/js/shared.js",
     index: "./src/html/pages/index/main.js",
     game: "./src/html/pages/game/main.js",
-    gameover: "./src/html/pages/gameover/main.js",
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -24,12 +23,7 @@ module.exports = {
       chunks: ["game", "shared"],
       filename: "game/index.html",
     }),
-    new HTMLWebpackPlugin({
-      template: "./src/html/pages/gameover/gameover.html",
-      inject: true,
-      chunks: ["gameover", "shared"],
-      filename: "gameover/index.html",
-    }),
+
     new CleanWebpackPlugin(),
     new WebpackPrettierPlugin(),
   ],
