@@ -1,5 +1,6 @@
 import { FetchQuestions } from "../../../js/tools/FetchQuestions";
 import { RenderRound } from "../../../js/tools/RenderRound";
+import { PostData } from "../../../js/tools/PostData";
 
 const getQuestionsNum = 5;
 const player = {
@@ -111,8 +112,6 @@ function HandleResult(result) {
       createNextButton();
     }
   }
-
-  console.log(player);
 }
 
 function createNextButton() {
@@ -133,5 +132,18 @@ function createNextButton() {
 }
 
 function gameOver() {
+  document.querySelector(".gameover").classList.add("gameover--open");
   document.querySelector("#result").innerText = player.score;
+
+  let formData = {};
+
+  document.querySelector("#submitScore").addEventListener("click", (e) => {
+    e.preventDefault();
+    formData.username = document.querySelector('input[name="name"]').value;
+    formData.score = player.score;
+    formData.avatar = document.querySelector(
+      'input[name="avatar"]:checked'
+    ).value;
+    PostData(formData);
+  });
 }
