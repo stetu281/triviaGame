@@ -70,7 +70,6 @@ async function PlayRound(question) {
 
 function HandleResult(result) {
   const resultContainer = document.querySelector(".question__resultContainer");
-  console.log(result);
   player.round++;
   const msg = document.createElement("p");
   msg.classList.add("question__resultMessage");
@@ -96,6 +95,17 @@ function HandleResult(result) {
       console.log("game over");
     } else {
       player.lives--;
+      switch (player.lives) {
+        case 2:
+          document
+            .querySelector(".header__lifesContainer svg:nth-child(1)")
+            .classList.add("hide");
+          break;
+        case 1:
+          document
+            .querySelector(".header__lifesContainer svg:nth-child(2)")
+            .classList.add("hide");
+      }
       createNextButton();
     }
   }
