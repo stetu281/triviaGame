@@ -4,6 +4,7 @@ const serverless = require("serverless-http");
 const pool = require("./db").pool;
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { body, validationResult } = require("express-validator");
 
 const api = express();
 const router = express.Router();
@@ -46,6 +47,51 @@ router.get("/score/:limit", (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.status(500).json({ error: err });
+  }
+});
+
+//post score
+function NameValidation() {
+  return [
+    body("username")
+      .isLength({ min: 3 })
+      .withMessage("Name must be at least 3 characters long")
+      .isLength({ max: 16 })
+      .withMessage("Name must be less than 17 characters long")
+      .exists()
+      .withMessage("Please enter a name")
+      .trim()
+      .matches(/^(?:[A-Za-z]+)(?:[A-Za-z0-9 _]*)$/)
+      .withMessage(
+        "Name can contain letters, numbers and whitespace (First char must be a letter)"
+      )
+      .escape(),
+  ];
+}
+
+router.post("/score", NameValidation(), (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { username, score, avatar } = req.body;
+  const sql =
+    "INSERT INTO highscores (username, score, avatar) VALUES (?, ?, ?)";
+  const values = [username, score, avatar];
+
+  try {
+    pool.getConnection((err, connection) => {
+      if (err) throw err;
+
+      connection.query(sql, values, (err, result) => {
+        if (err) throw err;
+        res.status(200).json({ message: "Thanks, score added" });
+        connection.release();
+      });
+    });
+  } catch (err) {
     res.status(500).json({ error: err });
   }
 });
