@@ -1,4 +1,6 @@
 export const FetchScores = async (limit) => {
+  console.log(limit);
+
   try {
     const response = await fetch(`http://localhost:8888/api/score/${limit}`);
 
