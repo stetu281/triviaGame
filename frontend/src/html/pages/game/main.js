@@ -139,6 +139,9 @@ function gameOver() {
 
   document.querySelector("#submitScore").addEventListener("click", (e) => {
     e.preventDefault();
+    document
+      .querySelector(".submitScore__error")
+      .classList.remove("submitScore__error--show");
     formData.username = document.querySelector('input[name="name"]').value;
     formData.score = player.score;
     formData.avatar = document.querySelector(

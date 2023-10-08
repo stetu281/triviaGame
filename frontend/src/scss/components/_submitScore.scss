@@ -70,4 +70,27 @@
     color: $white;
     border-radius: $br_xl;
   }
+
+  &__error {
+    position: fixed;
+    padding: 2rem;
+    top: -100%;
+    left: 0;
+    right: 0;
+    background-color: $red;
+    transition: top 0.3s ease-in-out;
+
+    &--show {
+      top: 0;
+    }
+
+    h3 {
+      font-weight: 900;
+      text-decoration: underline;
+    }
+
+    ul li {
+      padding: 0.5rem 0;
+    }
+  }
 }
