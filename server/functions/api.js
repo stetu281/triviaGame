@@ -29,7 +29,7 @@ router.get("/score/:limit", (req, res) => {
   const limit = req.params.limit;
 
   if (limit === "all" || isNaN(limit)) {
-    sql = "SELECT * FROM highscores ORDER BY score DESC, createdAt ASC)";
+    sql = "SELECT * FROM highscores ORDER BY score DESC, createdAt ASC";
   } else {
     sql = `SELECT * FROM highscores ORDER BY score DESC, createdAt ASC LIMIT ${limit}`;
   }
