@@ -71,28 +71,40 @@ function NameValidation() {
 }
 
 router.post("/score", NameValidation(), (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
   const { username, score, avatar } = req.body;
-  const sql =
-    "INSERT INTO highscores (username, score, avatar) VALUES (?, ?, ?)";
-  const values = [username, score, avatar];
 
+  const nameCheck = `SELECT 1 FROM highscores WHERE username = ?`;
+  const name = [username];
   try {
     pool.getConnection((err, connection) => {
       if (err) throw err;
 
-      connection.query(sql, values, (err, result) => {
+      connection.query(nameCheck, name, (err, result) => {
         if (err) throw err;
-        res.status(200).json({ message: "Thanks, score added" });
-        connection.release();
+
+        if (result.length != 0) {
+          res.status(422).json({
+            errors: "Username already exists, please choose a different one",
+          });
+        } else {
+          const errors = validationResult(req);
+          if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+          }
+
+          const sql =
+            "INSERT INTO highscores (username, score, avatar) VALUES (?, ?, ?)";
+          const values = [username, score, avatar];
+          connection.query(sql, values, (err, result) => {
+            if (err) throw err;
+            res.status(200).json({ message: "Thanks, score added" });
+            connection.release();
+          });
+        }
       });
     });
   } catch (err) {
-    res.status(500).json({ error: err });
+    console.log(err);
   }
 });
 
