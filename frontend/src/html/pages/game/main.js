@@ -137,17 +137,51 @@ function gameOver() {
 
   let formData = {};
 
-  document.querySelector("#submitScore").addEventListener("click", (e) => {
-    e.preventDefault();
+  document
+    .querySelector("#submitScore")
+    .addEventListener("click", async (e) => {
+      e.preventDefault();
 
-    document
-      .querySelector(".submitScore__error")
-      .classList.remove("submitScore__error--show");
-    formData.username = document.querySelector('input[name="name"]').value;
-    formData.score = player.score;
-    formData.avatar = document.querySelector(
-      'input[name="avatar"]:checked'
-    ).value;
-    PostData(formData);
+      document
+        .querySelector(".submitScore__error")
+        .classList.remove("submitScore__error--show");
+      formData.username = document.querySelector('input[name="name"]').value;
+      formData.score = player.score;
+      formData.avatar = document.querySelector(
+        'input[name="avatar"]:checked'
+      ).value;
+      console.log(formData);
+      const scores = await PostData(formData);
+
+      if (scores) {
+        calculateRank(scores, formData);
+      }
+    });
+
+  document.querySelector(".gameover__next").addEventListener("click", (e) => {
+    if (e.target && e.target.matches("button")) {
+      console.log(e.target);
+      if (e.target.id === "openScoreboard") {
+        document.querySelector(".sb").classList.add("sb--open");
+      } else {
+        window.location.replace("http://localhost:8080/game/");
+      }
+    }
   });
+
+  document.querySelector(".sb__close").addEventListener("click", () => {
+    document.querySelector(".sb").classList.remove("sb--open");
+  });
+}
+
+function calculateRank({ scores }, data) {
+  const rank = scores.findIndex((score) => score.username === data.username);
+
+  document.querySelector(".submitScore").innerHTML = `
+  <img src="../assets/avatar-${data.avatar}-1x.png" alt="" />
+  <p>Thanks ${data.username}</p>
+  <p>Your rank is<br /><span>#${rank + 1}</span><br />of ${
+    scores.length
+  } players</p>
+`;
 }

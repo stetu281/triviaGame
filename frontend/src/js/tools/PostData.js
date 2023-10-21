@@ -17,13 +17,12 @@ export const PostData = async (formData) => {
 
     if (response.status === 500) {
       throw new Error("Sorry, something went wrong, please try again");
-    } else if (response.status === 400 || response.status === 422) {
-      HandleErrors(await data.errors);
-    }
+    } else if (response.status >= 400 && response.status <= 499) {
+      throw data.errors;
+    } else {
+      loader.classList.add("loader--hide");
 
-    loader.classList.add("loader--hide");
-
-    document.querySelector(".submitScore").innerHTML = `
+      document.querySelector(".submitScore").innerHTML = `
       <p class="submitScore__added">Score added<br />
       loading result</p>
       <svg
@@ -46,10 +45,11 @@ export const PostData = async (formData) => {
         </svg>
     `;
 
-    const scores = await FetchScores("all");
-    console.log(scores);
+      const scores = await FetchScores("all");
+      return scores;
+    }
   } catch (error) {
     loader.classList.add("loader--hide");
-    console.log(error);
+    HandleErrors(error);
   }
 };
