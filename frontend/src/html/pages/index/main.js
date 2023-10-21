@@ -4,14 +4,15 @@ const avatars = importAll(
 );
 
 (async () => {
-  const data = await FetchScores(3);
+  const data = await FetchScores("all");
+  sessionStorage.setItem("scoreboard", JSON.stringify(data));
   renderTopScores(data);
 })();
 
 function renderTopScores({ scores }) {
   const container = document.querySelector(".home__scoreContainer");
 
-  for (let i = 0; i < scores.length; i++) {
+  for (let i = 0; i < 3; i++) {
     let div = document.createElement("div");
     div.className = "home__singleScore";
     div.innerHTML = `
