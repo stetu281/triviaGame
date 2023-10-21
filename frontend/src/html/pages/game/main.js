@@ -5,7 +5,7 @@ import { PostData } from "../../../js/tools/PostData";
 const getQuestionsNum = 5;
 const player = {
   round: 0,
-  score: 0,
+  score: 100,
   lives: 0,
   questions: null,
 };
@@ -18,6 +18,9 @@ async function start() {
   const question = await PrepareRound();
   const roundResult = await PlayRound(question);
   HandleResult(roundResult);
+
+  const sessionData = JSON.parse(sessionStorage.scoreboard);
+  generateScoreboard(sessionData);
 }
 
 //******Function -- prepare game round******
@@ -188,9 +191,11 @@ function calculateRank({ scores }, data) {
 }
 
 function generateScoreboard({ scores }) {
-  console.log(scores);
   const top = document.querySelector(".sb__top");
   const list = document.querySelector(".sb__list");
+
+  top.innerHTML = "";
+  list.innerHTML = "";
 
   if (scores.length < 1) {
     top.innerText = "Scoreboard empty";
