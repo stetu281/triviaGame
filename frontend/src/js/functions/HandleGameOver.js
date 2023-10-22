@@ -11,28 +11,33 @@ export const HandleGameOver = (player) => {
   document.querySelector(".gameover").classList.add("gameover--open");
   document.querySelector("#result").innerText = player.score;
 
-  let formData = {};
+  if (player.score === 0) {
+    document.querySelector(".submitScore").innerHTML =
+      "<p>Thank for playing.<br />Try again and score some points to enter scoreboard.</p>";
+  } else {
+    let formData = {};
 
-  document
-    .querySelector("#submitScore")
-    .addEventListener("click", async (e) => {
-      e.preventDefault();
+    document
+      .querySelector("#submitScore")
+      .addEventListener("click", async (e) => {
+        e.preventDefault();
 
-      document
-        .querySelector(".submitScore__error")
-        .classList.remove("submitScore__error--show");
-      formData.username = document.querySelector('input[name="name"]').value;
-      formData.score = player.score;
-      formData.avatar = document.querySelector(
-        'input[name="avatar"]:checked'
-      ).value;
-      const scores = await PostData(formData);
+        document
+          .querySelector(".submitScore__error")
+          .classList.remove("submitScore__error--show");
+        formData.username = document.querySelector('input[name="name"]').value;
+        formData.score = player.score;
+        formData.avatar = document.querySelector(
+          'input[name="avatar"]:checked'
+        ).value;
+        const scores = await PostData(formData);
 
-      if (scores) {
-        RenderRank(scores, formData);
-        RenderScoreboard(scores);
-      }
-    });
+        if (scores) {
+          RenderRank(scores, formData);
+          RenderScoreboard(scores);
+        }
+      });
+  }
 
   document.querySelector(".gameover__next").addEventListener("click", (e) => {
     if (e.target && e.target.matches("button")) {
