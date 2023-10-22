@@ -31,6 +31,8 @@
   }
 
   &__progress {
+    rotate: -90deg;
+
     circle {
       stroke-dashoffset: 226;
       stroke-dasharray: 226;

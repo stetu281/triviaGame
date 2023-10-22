@@ -9,8 +9,10 @@
   }
 
   &__question {
+    margin-top: 1rem;
     font-family: $bold;
-    font-size: 2.25rem;
+    font-size: 1.75rem;
+    line-height: 115%;
   }
 
   &__answer {
