@@ -16,7 +16,7 @@ function renderTopScores({ scores }) {
     let div = document.createElement("div");
     div.className = "home__singleScore";
     div.innerHTML = `
-            <img src="assets/avatar-${scores[i].avatar}.webp" class="home__singleScore--img" /><p class="home__singleScore--name">${scores[i].username}</p><p class="home__singleScore--score">${scores[i].score} Points</p>
+            <img src="assets/avatar-${scores[i].avatar}.webp" class="home__singleScore--img" alt="Avatar" width="96px" height="96px" /><p class="home__singleScore--name">${scores[i].username}</p><p class="home__singleScore--score">${scores[i].score} Points</p>
         `;
     container.appendChild(div);
     document.querySelector("#loader").classList.add("loader--hide");
