@@ -1,8 +1,9 @@
-import { FetchQuestions } from "../../../js/tools/FetchQuestions";
-import { RenderRound } from "../../../js/tools/RenderRound";
-import { PostData } from "../../../js/tools/PostData";
-import { RenderScoreboard } from "../../../js/tools/RenderScoreboard";
-import { RenderRank } from "../../../js/tools/RenderRank";
+import { FetchQuestions } from "../../../js/functions/FetchQuestions";
+import { RenderRound } from "../../../js/functions/RenderRound";
+import { PostData } from "../../../js/functions/PostData";
+import { RenderScoreboard } from "../../../js/functions/RenderScoreboard";
+import { RenderRank } from "../../../js/functions/RenderRank";
+import { PrepareRound } from "../../../js/functions/PrepareRound";
 
 const getQuestionsNum = 5;
 const player = {
@@ -17,24 +18,12 @@ const player = {
 })();
 
 async function start() {
-  const question = await PrepareRound();
+  const question = await PrepareRound(player);
   const roundResult = await PlayRound(question);
   HandleResult(roundResult);
 
   const sessionData = JSON.parse(sessionStorage.scoreboard);
   RenderScoreboard(sessionData);
-}
-
-//******Function -- prepare game round******
-async function PrepareRound() {
-  //get new questions from API if no questions in player object or all played
-  if (player.questions === null || player.round % getQuestionsNum === 0) {
-    const questions = await FetchQuestions(getQuestionsNum);
-    player.questions = questions;
-  }
-
-  RenderRound(player);
-  return player.questions[player.round];
 }
 
 //******Function -- wait for player answer or timer end******
