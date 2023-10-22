@@ -1,4 +1,4 @@
-import { FetchScores } from "../../../js/tools/FetchScores";
+import { FetchScores } from "../../../js/functions/FetchScores";
 const avatars = importAll(
   require.context("../../../assets/images/avatars", false, /\.(png)$/)
 );
