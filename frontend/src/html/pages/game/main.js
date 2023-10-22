@@ -184,7 +184,7 @@ function calculateRank({ scores }, data) {
   document.querySelector(".submitScore").innerHTML = `
   <img src="../assets/avatar-${
     data.avatar
-  }-1x.png" class="submitScore__avatar" alt="" />
+  }.webp" class="submitScore__avatar" alt="" />
   
   <p class="submitScore__thanks">Thanks ${data.username}</p>
   ${
@@ -214,10 +214,10 @@ function generateScoreboard({ scores }) {
       if (index >= 0 && index <= 2) {
         container.classList.add("sb__top3", `sb__top3--${index}`);
         container.innerHTML = `
-          <img src="../assets/avatar-${item.avatar}-2x.png" alt="" />
+          <img src="../assets/avatar-${item.avatar}.webp" alt="" />
           <p class="sb__top--rank">${index + 1}</p>
           <p class="sb__top--name">${item.username}</p>
-          <p class="sb__top--points">${item.score}</p>
+          <p class="sb__top--points">${item.score} Points</p>
         `;
         top.appendChild(container);
       } else {
@@ -225,7 +225,7 @@ function generateScoreboard({ scores }) {
         container.innerHTML = `
           <p class="sb__item--rank">${index + 1}</p>
           <div class="sb__item--container">
-            <img src="../assets/avatar-${item.avatar}-2x.png" />
+            <img src="../assets/avatar-${item.avatar}.webp" />
             <p class="sb__item--name">${item.username}</p>
             <p class="sb__item--points">${item.score} P</p>
           </div>
