@@ -3,6 +3,7 @@ const fs = require("fs");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const WebpackPrettierPlugin = require("webpack-prettier-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -26,6 +27,7 @@ module.exports = {
 
     new CleanWebpackPlugin(),
     new WebpackPrettierPlugin(),
+    new FaviconsWebpackPlugin("./src/assets/images/favicon.svg"),
   ],
   module: {
     rules: [
