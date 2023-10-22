@@ -98,7 +98,6 @@ function HandleResult(result) {
     createNextButton();
   } else {
     if (player.lives <= 1) {
-      console.log("game over");
       gameOver();
     } else {
       player.lives--;

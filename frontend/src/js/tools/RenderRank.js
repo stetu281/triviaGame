@@ -1,4 +1,8 @@
 export const RenderRank = ({ scores }, data) => {
+  /**
+   * Create player rank card after score submit
+   */
+
   const rank = scores.findIndex((score) => score.username === data.username);
 
   document.querySelector(".submitScore").innerHTML = `
@@ -8,7 +12,7 @@ export const RenderRank = ({ scores }, data) => {
     
     <p class="submitScore__thanks">Thanks ${data.username}</p>
     ${
-      rank < 4
+      rank < 3
         ? "<p class='submitScore__congrats'>Congratulation, you made the top 3</p>"
         : ""
     }

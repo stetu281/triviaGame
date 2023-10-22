@@ -1,4 +1,8 @@
 export const RandomizeAnswers = (answers) => {
+  /**
+   * returns shuffled array with answers
+   */
+
   let arr = [...answers.incorrectAnswers];
   arr.splice(RandomInt(0, 3), 0, answers.correctAnswer);
 

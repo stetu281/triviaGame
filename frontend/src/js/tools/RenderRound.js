@@ -1,5 +1,9 @@
 import { RandomizeAnswers } from "./RandomizeAnswers";
 
+/**
+ * Create Buttons for answers
+ */
+
 export const RenderRound = (player) => {
   const question = player.questions[player.round];
 

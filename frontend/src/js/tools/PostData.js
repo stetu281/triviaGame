@@ -1,6 +1,12 @@
 import { HandleErrors } from "./HandleErrors";
 import { FetchScores } from "./FetchScores";
 
+/**
+ * Post player name, avatar and score to database
+ * Handle loader animation on submitscore button
+ * returns highscores from database
+ */
+
 export const PostData = async (formData) => {
   const loader = document.querySelector(".loader");
 

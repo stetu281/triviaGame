@@ -1,4 +1,8 @@
 export const RenderScoreboard = ({ scores }) => {
+  /**
+   * Populates scoreboard on overlay div
+   */
+
   const top = document.querySelector(".sb__top");
   const list = document.querySelector(".sb__list");
 
