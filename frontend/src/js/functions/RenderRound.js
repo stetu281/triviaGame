@@ -5,7 +5,7 @@ import { RandomizeAnswers } from "./RandomizeAnswers";
  */
 
 export const RenderRound = (player) => {
-  const question = player.questions[player.round];
+  const question = player.questions[player.num];
 
   document.querySelector("#question").innerText = player.round + 1;
   document.querySelector("#points").innerText = player.score;

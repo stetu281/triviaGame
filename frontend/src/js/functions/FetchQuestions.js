@@ -1,5 +1,5 @@
 export const FetchQuestions = async (num) => {
-  const data = [
+  /*   const data = [
     {
       category: "Music",
       id: "622a1c397cc59eab6f950ce6",
@@ -67,12 +67,12 @@ export const FetchQuestions = async (num) => {
     setTimeout(() => {
       resolve(data);
     }, 2000);
-  });
+  }); */
 
-  /*   const response = await fetch(
+  const response = await fetch(
     `https://the-trivia-api.com/api/questions?limit=${num}`
   );
 
   const questions = await response.json();
-  return questions; */
+  return questions;
 };

@@ -10,6 +10,7 @@ export const HandleResult = (result, player) => {
 
   const resultContainer = document.querySelector(".question__resultContainer");
   player.round++;
+  player.num++;
   const msg = document.createElement("p");
   msg.classList.add("question__resultMessage");
   msg.innerText = result[1];
