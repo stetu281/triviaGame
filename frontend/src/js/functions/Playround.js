@@ -23,8 +23,10 @@ export const PlayRound = async (question) => {
             timerAnimation.classList.remove("timer__progress--play");
 
             if (e.target.innerText === question.correctAnswer) {
+              e.target.classList.add("question__answer--correct");
               resolve([true, "Perfect, thats correct!"]);
             } else {
+              e.target.classList.add("question__answer--wrong");
               resolve([false, "Wrong answer. You lost a life!"]);
             }
           }

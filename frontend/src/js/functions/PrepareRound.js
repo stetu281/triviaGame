@@ -8,7 +8,6 @@ import { FetchQuestions } from "./FetchQuestions";
 
 export const PrepareRound = async (player) => {
   const getQuestionsNum = 5;
-  console.log(player);
 
   if (player.questions === null || player.num % 5 === 0) {
     const questions = await FetchQuestions(getQuestionsNum);

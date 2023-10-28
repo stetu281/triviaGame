@@ -1,4 +1,5 @@
 export const HandleErrors = (errors) => {
+  console.log(errors);
   const ul = document.querySelector(".submitScore__errorList");
 
   ul.innerHTML = "";
