@@ -13,7 +13,7 @@ export const HandleGameOver = (player) => {
 
   if (player.score === 0) {
     document.querySelector(".submitScore").innerHTML =
-      "<p>Thank for playing.<br />Try again and score some points to enter scoreboard.</p>";
+      "<p>Thank for playing.<br />Try again and score some points to add your name to the scoreboard.</p>";
   } else {
     let formData = {};
 
