@@ -1,0 +1,50 @@
+.info {
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  transition: top 0.8s ease-in-out;
+  width: 100%;
+  height: 100%;
+  background-color: $bg_dark;
+
+  &--hide {
+    top: -100%;
+  }
+
+  h2 {
+    margin-top: 4rem;
+    font-size: 2.5rem;
+    font-weight: 900;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  a {
+    color: $primary;
+    transition: color 0.4s ease-in-out;
+
+    &:hover {
+      color: $green;
+    }
+  }
+
+  table {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    border: 1px solid $white;
+
+    tr {
+      td {
+        line-height: 160%;
+
+        &:last-of-type {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

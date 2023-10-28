@@ -1,4 +1,21 @@
 .home {
+  .frame {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__info {
+    background-color: transparent;
+    border-radius: $br_xl;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
   &__logo {
     margin-top: 5rem;
     text-align: center;
