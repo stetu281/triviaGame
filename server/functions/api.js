@@ -5,6 +5,7 @@ const pool = require("./db").pool;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { body, validationResult } = require("express-validator");
+require("dotenv").config();
 
 const api = express();
 const router = express.Router();
@@ -13,15 +14,10 @@ api.use(helmet());
 api.use(bodyParser.json());
 api.use(
   cors({
-    origin: "http://localhost:8080",
+    origin: process.env.ORIGIN,
     credentials: true,
   })
 );
-
-//Test
-router.get("/", (req, res) => {
-  res.status(200).send("Hello");
-});
 
 //get Scores
 router.get("/score/:limit", (req, res) => {
