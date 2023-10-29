@@ -104,6 +104,6 @@ router.post("/score", NameValidation(), (req, res) => {
   }
 });
 
-api.use("/api/", router);
+api.use("/", router);
 
 module.exports.handler = serverless(api);
