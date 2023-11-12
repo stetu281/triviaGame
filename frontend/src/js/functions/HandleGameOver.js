@@ -44,7 +44,7 @@ export const HandleGameOver = (player) => {
       if (e.target.id === "openScoreboard") {
         document.querySelector(".sb").classList.add("sb--open");
       } else {
-        window.location.replace("http://localhost:8080/game/");
+        window.location.replace("https://stefanturner.ch/projects/trivia/");
       }
     }
   });

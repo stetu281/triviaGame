@@ -6,7 +6,7 @@ import { HandleErrors } from "./HandleErrors";
 
 export const FetchScores = async (limit) => {
   try {
-    const response = await fetch(`http://localhost:8888/api/score/${limit}`);
+    const response = await fetch(`${process.env.URL}/score/${limit}`);
 
     if (!response.ok) {
       throw new Error(`Sorry, could not load scores.`);
