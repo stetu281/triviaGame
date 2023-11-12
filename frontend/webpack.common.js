@@ -4,6 +4,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const WebpackPrettierPlugin = require("webpack-prettier-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: {
@@ -28,6 +29,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new WebpackPrettierPlugin(),
     new FaviconsWebpackPlugin("./src/assets/images/favicon.svg"),
+    new Dotenv(),
   ],
   module: {
     rules: [
